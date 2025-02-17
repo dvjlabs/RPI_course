@@ -70,11 +70,11 @@ nav:
       - Base: rpi/02_base.md
       - Remoto: rpi/03_remote.md
       - Multimedia: rpi/04_multimedia.md
-  - RPi e sensori:
-      - RPi e sensori: sensori/00_intro.md
-      - WiringPi: sensori/01_wiringpi.md
-      - GPIO: sensori/02_gpio.md
-      - breadBoard: sensori/03_breadboard.md
+  - IoT:
+      - RPi e sensori: iot/00_intro.md
+      - WiringPi: iot/01_wiringpi.md
+      - GPIO: iot/02_gpio.md
+      - breadBoard: iot/03_breadboard.md
   - OpenCV:
       - Introduzione: opencv/00_intro.md
       - OpenCV: opencv/01_OpenCV.md
