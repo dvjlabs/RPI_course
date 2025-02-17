@@ -5,20 +5,20 @@ hide:
   - footer
 ---
 
-# Raspberry Pi (FIXME)
+# Raspberry Pi
 
 
-![MicroPython + ESP32](MicroPythonPlusESP32.jpg)
+![Raspberry Pi 3B+](RaspberryPi3B+.jpg)
 
 Un semplice corso per parlare di:
 
-- **il microcontrollore ESP32**: un dispositivo programmabile alla nostra portata
+- **Raspberry Pi**: un computer delle dimensioni di una carta di credito
 
-- **L'interprete MicroPython**: un interprete Python ridotto, adatto per i microcontrollori
+- **Internet of Things**: la *moda* elettronica del momento. Del presente... e del futuro!!!
 
-- **Thonny**: il nostro editor Python preferito!!! Qui utilizzato (anche) per interagire con un microcontrollore
+- **Thonny**: il nostro editor Python preferito!!! Python c'entra sempre...
 
-- **sensori ed elettronica**: vuoi implementare un semaforo? Una calcolatrice? Una stazione meteo? Un allarme? Dovrai far interagire alcuni sensori con il tuo microcontrollore e dovrai gestirli tramite il tuo codice. Sarà divertente!!!
+- **OpenCV**: Una libreria utile per l'elaborazione al computer delle immagini e dei video in tempo reale.
 
 Poi... per il divertimento di tutti, allestiremo anche una sezione di tutorials, per (provare a) fare cose in autonomia!!
 
