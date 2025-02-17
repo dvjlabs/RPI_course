@@ -2,7 +2,7 @@
 
 Liberamente ispirandomi a Wikipedia, posso dirvi che OpenCV (acronimo in
 lingua inglese di Open Source Computer Vision Library) è una libreria
-software multipiattaforma nell\'ambito della visione artificiale in
+software multipiattaforma nell'ambito della visione artificiale in
 tempo reale.
 
 È una libreria software libera originariamente sviluppato da Intel e poi
@@ -13,17 +13,17 @@ attraverso il C, il Python e Java.
 
 ## Installazione su RPI3 (Raspbian Buster)
 
-L\'installazione della libreria su Raspbian Buster è notevolmente
+L'installazione della libreria su Raspbian Buster è notevolmente
 semplificata dalla presenza di alcuni pacchetti precompilati nei
 repository.
 
-L\'installazione descritta di seguito è relativo alla versione 3.4.x
+L'installazione descritta di seguito è relativo alla versione 3.4.x
 nonostante sia già disponibile, anche su Raspbian, la versione 4.1.x.
 Purtroppo nei nostri test di laboratorio abbiamo avuto qualche
-problemino con essa\...
+problemino con essa...
 
 Procedete come di seguito. Ricordate inoltre che qualsiasi operazione di
-installazione del sistema inizia con l\'aggiornamento dello stesso\...
+installazione del sistema inizia con l'aggiornamento dello stesso...
 
 ``` bash
 $ sudo apt install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
@@ -38,7 +38,7 @@ $ sudo apt install libqtgui4 libqtwebkit4 libqt4-test python3-pyqt5
 $ sudo apt install python3-dev
 ```
 
-Poi, finalmente\...
+Poi, finalmente...
 
 ``` bash
 $ sudo pip3 install opencv-contrib-python==3.4.3.18
@@ -46,29 +46,30 @@ $ sudo pip3 install opencv-contrib-python==3.4.3.18
 
 ## TEST
 
-Al termine dell\'installazione si può procedere con il primo test di
-funzionamento, che verifica semplicemente se l\'installazione è andata a
+Al termine dell'installazione si può procedere con il primo test di
+funzionamento, che verifica semplicemente se l'installazione è andata a
 buon fine. Il test prova semplicemente a caricare il modulo `cv2`
-all\'interno dell\'interprete `python3`.
+all'interno dell'interprete `python3`.
 
 ``` bash
 $ python3
-Python 3.7.3 (default, Apr  3 2019, 05:39:12) 
+Python 3.7.3 (default, Apr  3 2019, 05:39:12)
 [GCC 8.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import cv2
 >>>
 ```
 
+
 ## LAB 00 - Controlliamo un pò di versioni
 
 Prima di procedere, assicuriamoci, ancora, di avere installato
-correttamente le versioni di Opencv e di Python. Ancora , direte voi\...
+correttamente le versioni di Opencv e di Python. Ancora , direte voi...
 beh la prudenza non è mai troppa. Probabilmente troverete già installato
 il programma Thonny sul vostro Raspberry. Thonny è un semplice ed
-\"abbastanza\" completo IDE (Integrated Development Environment) per
+"abbastanza" completo IDE (Integrated Development Environment) per
 sviluppare applicazioni in Python. Quindi, caricate su Thonny il testo
-sotto indicato ed eseguitelo\... Se non dovesse funzionare potete sempre
+sotto indicato ed eseguitelo... Se non dovesse funzionare potete sempre
 utilizzare la shell di comandi (terminale).
 
 ``` bash
@@ -80,7 +81,8 @@ print ("versione OpenCv")
 print(cv.__version__)
 ```
 
-## LAB 01 - Carichiamo un\'immagine
+
+## LAB 01 - Carichiamo un'immagine
 
 Cominciamo a prendere un pò di confidenza con le immagini. Carichiamone
 una e proviamo a comprendere il codice sotto riportato.
@@ -101,12 +103,13 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+
 ## LAB 02 - Ancora sulle immagini
 
 Ancora sulle immagini. Questa volta invece di usare una immagine
-trasformata in scala di grigio, usiamo l\'immagine a colori. Notate il
+trasformata in scala di grigio, usiamo l'immagine a colori. Notate il
 diverso tasto di controllo per uscire dal programma e la possibilità di
-salvare l\'immagine sotto un altro nome.
+salvare l'immagine sotto un altro nome.
 
 ``` bash
 import cv2 as cv
@@ -131,7 +134,8 @@ elif k == ord('s'): # wait for 's' key to save and exit
     cv.destroyAllWindows()
 ```
 
-## LAB 03 - Disegniamo qualcosa. Forme, parole, linee\... liberate la vostra fantasia e create nuove immagini
+
+## LAB 03 - Disegniamo qualcosa. Forme, parole, linee... liberate la vostra fantasia e create nuove immagini
 
 ``` bash
 import numpy as np
@@ -143,18 +147,19 @@ cv2.rectangle(img,(15,25),(200,250),(0,0,255),5)
 cv2.circle(img,(100,63), 55, (0,255,0), -1)
 
 pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
-# OpenCV documentation had this code, which reshapes the array to a 1 x 2. I did not 
+# OpenCV documentation had this code, which reshapes the array to a 1 x 2. I did not
 # find this necessary, but you may:
 #pts = pts.reshape((-1,1,2))
 cv2.polylines(img, [pts], True, (0,255,255), 3)
 font = cv2.FONT_HERSHEY_SIMPLEX
 cv2.putText(img,'Ciao Mondo!',(0,50), font, 1, (200,255,155), 2, cv2.LINE_AA)
-#now show the modified image 
+#now show the modified image
 cv2.imshow('image',img)
 #wait for a pressed key
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
 
 ## LAB 04 - Finalmente un pò di video
 
@@ -162,7 +167,7 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 #a little of videos
-#reading video files 
+#reading video files
 cap = cv2.VideoCapture(0)
 
 while(True):
@@ -175,6 +180,7 @@ while(True):
 cap.release()
 cv2.destroyAllWindows()
 ```
+
 
 ## LAB 05 - Apriamo qualche finestra
 
@@ -189,7 +195,7 @@ while(True):
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     #color = cv.cvtColor(frame, cv.COLOR_BRG)
     # Display the resulting frame
-    cv.imshow('frame',gray) 
+    cv.imshow('frame',gray)
     cv.imshow('frame1',frame)
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
@@ -197,6 +203,7 @@ while(True):
 cap.release()
 cv.destroyAllWindows()
 ```
+
 
 ## LAB 06 - Visi: riconosciamoli
 
@@ -238,6 +245,7 @@ video_capture.release()
 cv2.destroyAllWindows()
 ```
 
+
 ## LAB 07 - Ogni viso ha i suoi occhi
 
 ``` bash
@@ -265,17 +273,18 @@ while 1:
 
     cv2.imshow('img',img)
     k = cv2.waitKey(30) & 0xff
-    if k == 27: #esc 27 ascii 
+    if k == 27: #esc 27 ascii
         break
 
 cap.release()
 cv2.destroyAllWindows()
 ```
 
+
 ## LAB 08 - Alla ricerca del colore
 
 Ponete un oggetto di colore verde davanti alla vostra webcam e vediamo
-cosa succede. Una pallina sarebbe l\'oggetto perfetto.
+cosa succede. Una pallina sarebbe l'oggetto perfetto.
 
 ``` bash
 import cv2
@@ -287,7 +296,7 @@ import math
 cap = cv2.VideoCapture(0)
 
 # Controllo che la telecamera sia disponibile
-if (cap.isOpened()== False): 
+if (cap.isOpened()== False):
   print("IMPOSSIBILE ACQUISIRE IL VIDEO!")
 
 # Eseguo finche il video e disponibile
@@ -321,7 +330,7 @@ while(cap.isOpened()):
     centroid_x, centroid_y = None, None
 
     if area != 0:
-        c_x = int(moments['m10']/area)       
+        c_x = int(moments['m10']/area)
         c_y = int(moments['m01']/area)
         print("x: ", c_x,"y: ",c_y)
 
@@ -346,7 +355,7 @@ while(cap.isOpened()):
         break
 
   # esco dal loop
-  else: 
+  else:
     break
 
 # chiudo il file video o lo stream della telecamera

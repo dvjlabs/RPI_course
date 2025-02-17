@@ -1,3 +1,3 @@
 # La Breadboard
 
-Blah blah
+Blah blah (arriva dalla dispensa dell'Esp32)

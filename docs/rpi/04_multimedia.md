@@ -2,39 +2,38 @@
 
 Quello che si vuole intendere in questa sezione come *Multimedia* è la
 possibilità di utilizzare con il nostro Raspberry alcune periferiche che
-poi torneranno utili nell\'utilizzo dell\'Intelligenza Artificiale.
+poi torneranno utili nell'utilizzo dell'Intelligenza Artificiale.
 
 Queste periferiche nello specifico sono:
 
 -   Una Webcam USB (utile per il riconoscimento facciale)
 -   Un microfono (per parlare, nella nostra dotazione è integrato nella
     webcam)
--   le casse audio (per ascoltare musica e\...la AI che parla!!!)
+-   le casse audio (per ascoltare musica e...la AI che parla!!!)
 
 ## Webcam
 
-::: warning
-::: title
-Warning
-:::
 
-Per poter utilizzare la webcam (ovvero accedere al file della periferica
-che la rappresenta) bisogna far parte del gruppo **video**. L\'utente
-*pi* è automaticamente parte di questo gruppo. Se vuoi verificare
-digita:
+!!! warning "Attenzione"
+    Per poter utilizzare la webcam (ovvero accedere al file della periferica
+    che la rappresenta) bisogna far parte del gruppo **video**. L'utente
+    *pi* è automaticamente parte di questo gruppo. Se vuoi verificare
+    digita:
 
-``` bash
-$ groups
-```
+    ``` bash
+    $ groups
+    ```
 
-Verranno elencati i gruppi di cui l\'utente corrente fa parte. Se per
-qualche motivo *video* non fosse fra questi, bisogna aggiungere il
-proprio utente al gruppo con il comando:
+    Verranno elencati i gruppi di cui l'utente corrente fa parte. Se per
+    qualche motivo *video* non fosse fra questi, bisogna aggiungere il
+    proprio utente al gruppo con il comando:
 
-``` bash
-$ sudo usermod -a -G video NOMEUTENTE
-```
-:::
+    ``` bash
+    $ sudo usermod -a -G video NOMEUTENTE
+    ```
+
+    E rifare il login
+
 
 Per poter utilizzare la webcam, basta collegarla al Raspberry e
 installare il software necessario al suo utilizzo:
@@ -43,7 +42,7 @@ installare il software necessario al suo utilizzo:
 $ sudo apt install fswebcam
 ```
 
-Questione di 1 minuto\...
+Questione di 1 minuto...
 
 Per fare una prima prova e farsi una foto con la webcam, basta digitare:
 
@@ -64,7 +63,7 @@ $ fswebcam -r 800x600 prova2.jpg
 ```
 
 Se non vi piace la barra sotto (il *banner*), basta eliminarlo con
-l\'opzione *\--no-banner*
+l'opzione *--no-banner*
 
 ``` bash
 $ fswebcam -r 800x600 --no-banner prova3.jpg
@@ -76,10 +75,12 @@ Il risultato:
 
 Più o meno tutto qui!
 
+
+
 ## Casse audio
 
 Queste sono davvero semplici da provare! Collegate le casse al Raspberry
-(jack e USB per l\'alimentazione) e provate a sentire un video di
+(jack e USB per l'alimentazione) e provate a sentire un video di
 Youtube! Se non funziona, forse il problema è che la periferica
 collegata al jack non è stata riconosciuta. Per assicurarci della cosa,
 proviamo con:
@@ -87,10 +88,12 @@ proviamo con:
 ``` bash
 $ sudo raspi-config
 
-Advanced Options ---> Audio ---> Jack
+Advanced Options ---> Audio ---> Jack (o pipewire??)
 ```
 
 E questo è tutto!
+
+
 
 ## Microfono integrato
 
@@ -105,7 +108,7 @@ Per registrare:
 $ arecord prova.wav
 ```
 
-Dite una frase tipo \"che bello questo corso!!!\", aspettate un paio di
+Dite una frase tipo "che bello questo corso!!!", aspettate un paio di
 secondi e poi premete la combinazione di tasti **CTRL + C** per
 interrompere la registrazione.
 
