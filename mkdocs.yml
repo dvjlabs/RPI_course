@@ -1,8 +1,8 @@
 site_name: Raspberry Pi
 site_author: dvjlabs team
 copyright: >
-    dvjlabs (c) 2022-inf<br>
-    <a href="#__consent">Change Cookie Settings</a>
+  dvjlabs (c) 2022-inf<br>
+  <a href="#__consent">Change Cookie Settings</a>
 
 # ----------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ theme:
       primary: black
       accent: grey
       toggle:
-        icon: material/brightness-7 
+        icon: material/brightness-7
         name: Switch to dark mode
     # Palette toggle for dark mode
     - scheme: slate
@@ -34,17 +34,17 @@ extra:
   consent:
     title: Consenso all'utilizzo dei cookies
     description: >
-      Questo sito memorizza alcuni cookies solo per riconoscere un visitatore 
+      Questo sito memorizza alcuni cookies solo per riconoscere un visitatore
       che non è alla sua prima visita e alcune preferenze, come il tema di visualizzazione
       della pagina selezionato.<br>
       Se non acconsenti, questa finestra riapparirà ogni volta che riapri il sito.<br>
       Se vuoi cambiare le tue scelte, in fondo alla pagina trovi un link per modificarle ;)
     actions:
-     - accept
-     - reject
+      - accept
+      - reject
 
 extra_css:
-- stylesheets/extra.css
+  - stylesheets/extra.css
 
 # ------------------------------------------------
 
@@ -54,8 +54,8 @@ markdown_extensions:
   - toc: {}
   - def_list: {}
   - pymdownx.emoji: {}
-  - pymdownx.tasklist: {custom_checkbox: True}
-  - pymdownx.highlight: {anchor_linenums: True}
+  - pymdownx.tasklist: { custom_checkbox: True }
+  - pymdownx.highlight: { anchor_linenums: True }
   - pymdownx.inlinehilite: {}
   - pymdownx.snippets: {}
   - pymdownx.superfences: {}
@@ -63,11 +63,18 @@ markdown_extensions:
 # ------------------------------------------------
 
 nav:
-    - Home: index.md
-    - Raspberry Pi:
-        - Introduzione: rpi/00_intro.md
-    - RPi e sensori:
-        - Introduzione: sensori/00_intro.md
-    - OpenCV:
-        - Introduzione: opencv/00_intro.md
-
+  - Home: index.md
+  - Raspberry Pi:
+      - Introduzione: rpi/00_intro.md
+      - Installazione: rpi/01_installation.md
+      - Base: rpi/02_base.md
+      - Remoto: rpi/03_remote.md
+      - Multimedia: rpi/04_multimedia.md
+  - RPi e sensori:
+      - RPi e sensori: sensori/00_intro.md
+      - WiringPi: sensori/01_wiringpi.md
+      - GPIO: sensori/02_gpio.md
+      - breadBoard: sensori/03_breadboard.md
+  - OpenCV:
+      - Introduzione: opencv/00_intro.md
+      - OpenCV: opencv/01_OpenCV.md
