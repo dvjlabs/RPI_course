@@ -34,6 +34,8 @@ In our model, we shall use face, eye and smile haar-cascades, which after downlo
 need to be placed in the working directory.
 All the required Haar-cascades can be found here: https://github.com/opencv/opencv/tree/master/data/haarcascades
 
+
+
 <br>
 <br>
 <br>

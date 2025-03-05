@@ -25,17 +25,37 @@ problemino con essa...
 Procedete come di seguito. Ricordate inoltre che qualsiasi operazione di
 installazione del sistema inizia con l'aggiornamento dello stesso...
 
-``` bash
-$ sudo apt install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
-$ sudo apt install libxvidcore-dev libx264-dev
-$ sudo apt install libjpeg-dev libtiff5-dev libjasper-dev libpng-dev
-$ sudo apt install libhdf5-dev libhdf5-serial-dev libhdf5-103
-$ sudo apt install libatlas-base-dev gfortran
-$ sudo apt install libfontconfig1-dev libcairo2-dev
-$ sudo apt install libgdk-pixbuf2.0-dev libpango1.0-dev
-$ sudo apt install libgtk2.0-dev libgtk-3-dev
-$ sudo apt install libqtgui4 libqtwebkit4 libqt4-test python3-pyqt5
-$ sudo apt install python3-dev
+``` py title="Registrazione Video"
+import cv2
+
+# Open the default camera
+cam = cv2.VideoCapture(0)
+
+# Get the default frame width and height
+frame_width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+# Define the codec and create VideoWriter object
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (frame_width, frame_height))
+
+while True:
+    ret, frame = cam.read()
+
+    # Write the frame to the output file
+    out.write(frame)
+
+    # Display the captured frame
+    cv2.imshow('Camera', frame)
+
+    # Press 'q' to exit the loop
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+# Release the capture and writer objects
+cam.release()
+out.release()
+cv2.destroyAllWindows()
 ```
 
 Poi, finalmente...
