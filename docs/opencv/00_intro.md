@@ -2,9 +2,11 @@
 
 Giusto due parole per introdurre:
 
-- blah blah
+- Parliamo di un Raspberry o di un dispositivo con sistema operativo Linux.
 
+- QUalcuno millanta del funzionamento ANCHE Su Windows... proviamo!!!
 
+- Di sicuro serve un dispositivo che abbia una tastiera e una telecamera!!!
 
 Iniziamo!!
 
