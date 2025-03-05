@@ -11,6 +11,11 @@ programmazione principalmente utilizzato per sviluppare con questa
 libreria è il C++, ma è possibile interfacciarsi ad essa anche
 attraverso il C, il Python e Java.
 
+## DOCUMENTAZIONE PICAMERA
+
+<a href="https://picamera.readthedocs.io/en/release-1.13/index.html">LINK</a>
+
+
 ## Installazione su RPI3 (Raspbian Buster)
 
 L'installazione della libreria su Raspbian Buster è notevolmente
