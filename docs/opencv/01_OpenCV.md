@@ -11,24 +11,48 @@ programmazione principalmente utilizzato per sviluppare con questa
 libreria è il C++, ma è possibile interfacciarsi ad essa anche
 attraverso il C, il Python e Java.
 
+
+## Installazione su RPI3 (Raspbian Buster)
+
+
+``` py title="Registrazione Video"
+pip install opencv-python
+pip install picamera
+pip install pillow
+``` 
+
+
 ## DOCUMENTAZIONE PICAMERA
 
 <a href="https://picamera.readthedocs.io/en/release-1.13/index.html">LINK</a>
 
 
-## Installazione su RPI3 (Raspbian Buster)
+## CONTROLLO 
 
-L'installazione della libreria su Raspbian Buster è notevolmente
-semplificata dalla presenza di alcuni pacchetti precompilati nei
-repository.
+``` py title="Controllo versioni Python e OpenCV"
+import sys
+print("Versione Python", sys.version)
 
-L'installazione descritta di seguito è relativo alla versione 3.4.x
-nonostante sia già disponibile, anche su Raspbian, la versione 4.1.x.
-Purtroppo nei nostri test di laboratorio abbiamo avuto qualche
-problemino con essa...
+import cv2
+print ("versione OpenCv", cv2.__version__)
+```
 
-Procedete come di seguito. Ricordate inoltre che qualsiasi operazione di
-installazione del sistema inizia con l'aggiornamento dello stesso...
+
+## IMAGE SHOW
+
+``` py title="Mostrare una immagine con OpenCV"
+import cv2
+
+image = cv2.imread('andreagiorgio.webp')
+dim = image.shape
+print("Dim:", dim)
+cv2.imshow("Noi... da giovani!", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+## VIDEO CAPTURE
 
 ``` py title="Registrazione Video"
 import cv2
@@ -69,165 +93,7 @@ Poi, finalmente...
 $ sudo pip3 install opencv-contrib-python==3.4.3.18
 ```
 
-## TEST
 
-Al termine dell'installazione si può procedere con il primo test di
-funzionamento, che verifica semplicemente se l'installazione è andata a
-buon fine. Il test prova semplicemente a caricare il modulo `cv2`
-all'interno dell'interprete `python3`.
-
-``` bash
-$ python3
-Python 3.7.3 (default, Apr  3 2019, 05:39:12)
-[GCC 8.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import cv2
->>>
-```
-
-
-## LAB 00 - Controlliamo un pò di versioni
-
-Prima di procedere, assicuriamoci, ancora, di avere installato
-correttamente le versioni di Opencv e di Python. Ancora , direte voi...
-beh la prudenza non è mai troppa. Probabilmente troverete già installato
-il programma Thonny sul vostro Raspberry. Thonny è un semplice ed
-"abbastanza" completo IDE (Integrated Development Environment) per
-sviluppare applicazioni in Python. Quindi, caricate su Thonny il testo
-sotto indicato ed eseguitelo... Se non dovesse funzionare potete sempre
-utilizzare la shell di comandi (terminale).
-
-``` bash
-import cv2 as cv
-import sys
-print("Versione Python")
-print(sys.version)
-print ("versione OpenCv")
-print(cv.__version__)
-```
-
-
-## LAB 01 - Carichiamo un'immagine
-
-Cominciamo a prendere un pò di confidenza con le immagini. Carichiamone
-una e proviamo a comprendere il codice sotto riportato.
-
-``` bash
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-#legge un file in formato .jpg mostrato poi in due finestra
-#una di questa mostra l'immagine in scala di grigi
-
-img = cv2.imread('watch.jpg',cv2.IMREAD_GRAYSCALE)
-img1 = cv2.imread('watch.jpg')
-cv2.imshow('imageGray',img)
-cv2.imshow('imageColor',img1)
-#wait for a pressed key
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
-
-
-## LAB 02 - Ancora sulle immagini
-
-Ancora sulle immagini. Questa volta invece di usare una immagine
-trasformata in scala di grigio, usiamo l'immagine a colori. Notate il
-diverso tasto di controllo per uscire dal programma e la possibilità di
-salvare l'immagine sotto un altro nome.
-
-``` bash
-import cv2 as cv
-import sys
-print("Versione Python")
-print(sys.version)
-print ("versione OpenCv")
-print(cv.__version__)
-
-#import numpy library to do some draws
-import numpy as np
-# Load an color image in grayscale
-img = cv.imread('cam.jpg',cv.IMREAD_COLOR)
-print ("immagine caricata")
-cv.imshow('image', img)
-#wait for a pressed key
-k=cv.waitKey(0)
-if k == 27:         # wait for ESC key to exit
-    cv.destroyAllWindows()
-elif k == ord('s'): # wait for 's' key to save and exit
-    cv.imwrite('camsalvata.png',img)
-    cv.destroyAllWindows()
-```
-
-
-## LAB 03 - Disegniamo qualcosa. Forme, parole, linee... liberate la vostra fantasia e create nuove immagini
-
-``` bash
-import numpy as np
-import cv2
-
-img = cv2.imread('watch.jpg',cv2.IMREAD_COLOR)
-cv2.line(img,(0,0),(200,300),(255,255,255),5)
-cv2.rectangle(img,(15,25),(200,250),(0,0,255),5)
-cv2.circle(img,(100,63), 55, (0,255,0), -1)
-
-pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
-# OpenCV documentation had this code, which reshapes the array to a 1 x 2. I did not
-# find this necessary, but you may:
-#pts = pts.reshape((-1,1,2))
-cv2.polylines(img, [pts], True, (0,255,255), 3)
-font = cv2.FONT_HERSHEY_SIMPLEX
-cv2.putText(img,'Ciao Mondo!',(0,50), font, 1, (200,255,155), 2, cv2.LINE_AA)
-#now show the modified image
-cv2.imshow('image',img)
-#wait for a pressed key
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
-
-
-## LAB 04 - Finalmente un pò di video
-
-``` bash
-import numpy as np
-import cv2
-#a little of videos
-#reading video files
-cap = cv2.VideoCapture(0)
-
-while(True):
-    ret, frame = cap.read() #il modo più semplice per leggere un file video
-
-    cv2.imshow('frame',frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
-```
-
-
-## LAB 05 - Apriamo qualche finestra
-
-``` bash
-import numpy as np
-import cv2 as cv
-cap = cv.VideoCapture(0)
-while(True):
-    # Capture frame-by-frame
-    ret, frame = cap.read()
-    # Our operations on the frame come here
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    #color = cv.cvtColor(frame, cv.COLOR_BRG)
-    # Display the resulting frame
-    cv.imshow('frame',gray)
-    cv.imshow('frame1',frame)
-    if cv.waitKey(1) & 0xFF == ord('q'):
-        break
-# When everything done, release the capture
-cap.release()
-cv.destroyAllWindows()
-```
 
 
 ## LAB 06 - Visi: riconosciamoli
