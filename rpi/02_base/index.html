@@ -1,0 +1,1209 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="dvjlabs team">
+      
+      
+      
+        <link rel="prev" href="../01_installation/">
+      
+      
+        <link rel="next" href="../03_remote/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Base - Raspberry Pi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#operazioni-di-base" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../.." title="Raspberry Pi" class="md-header__button md-logo" aria-label="Raspberry Pi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Raspberry Pi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Base
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../00_intro/" class="md-tabs__link">
+          
+  
+  Raspberry Pi
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../iot/00_intro/" class="md-tabs__link">
+          
+  
+  IoT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../opencv/00_intro/" class="md-tabs__link">
+          
+  
+  OpenCV
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Raspberry Pi" class="md-nav__button md-logo" aria-label="Raspberry Pi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Raspberry Pi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Raspberry Pi
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Raspberry Pi
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduzione
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installazione
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configurazione-raspberry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurazione Raspberry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prime-operazioni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prime operazioni
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#il-terminale-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Il terminale Linux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestione-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestione software
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_remote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remoto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multimedia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multimedia
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IoT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IoT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iot/00_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPi e sensori
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iot/01_wiringpi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WiringPi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iot/02_gpio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iot/03_breadboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    breadBoard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OpenCV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            OpenCV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/00_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduzione
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opencv/01_OpenCV/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenCV
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="operazioni-di-base">Operazioni di base</h1>
+<p>Ripartiamo dal Raspberry come lo abbiamo lasciato un attimo fa: acceso,
+pronto (caricamento iniziale finito), con interfaccia grafica</p>
+<p><img alt="Raspbian Buster Image" src="../images/raspbian_buster.jpg" /></p>
+<p>Ricordo inoltre le credenziali dell'account di default.</p>
+<p><strong>USER: pi</strong><br>
+<strong>PASS: raspberry</strong><br></p>
+<p>Il tool che ci viene presentato davanti serve per la configurazione
+iniziale. Mi raccomando di <strong>non</strong> cambiare la password dell'utente
+<em>pi</em> a meno che non siate assolutamente sicuri di ricordarvela. In caso
+siate senza interfaccia grafica, oppure vogliate procedere con la buona
+vecchia riga di comando, chiudete quella finestra e leggetevi il
+prossimo capitolo.</p>
+<h2 id="configurazione-raspberry">Configurazione Raspberry</h2>
+<p>Il sistema operativo <code>Raspberry Pi OS</code> fornisce un tool a linea di testo da cui
+accedere a tutte le configurazioni di base del Raspberry. Per accedere
+ad esso si dovrà utilizzare il comando sudo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>raspi-config
+</code></pre></div>
+<p>A quel punto si avrà accesso ad una interfaccia <em>grafica-testuale</em> con
+cui completare la configurazione:</p>
+<p><img alt="raspi-config" src="../images/raspi-config.png" /></p>
+<p>Le opzioni sono in ordine e si può procedere tramite esse a configurare
+il Raspberry. Alcune opzioni sono chiarissime e non necessitano di
+spiegazioni; ad esempio quella di cambiare password :)</p>
+<p>Mi dedico a quelle che di solito servono:</p>
+<dl>
+<dt>Network Options</dt>
+<dd>
+<p>Le opzioni che trovate qui servono per impostare la rete. Sono cose
+che potete fare tranquillamente anche tramite l'interfaccia
+grafica, se la utilizzate.</p>
+<p>L'opzione importante da settare all'inizio riguarda però
+l'hostname, il nome del vostro Raspberry! Tramite quello sarà più
+facile identificarlo nella rete! Per applicare questa impostazione
+serve di riavviare il Raspberry. Potete farlo anche alla fine di
+tutta la configurazione ;)</p>
+</dd>
+<dt>Localisation Options</dt>
+<dd>
+<p>Queste opzioni servono per la localizzazione: tastiera italiana,
+lingua dei programmi, data, ora e loro formati, WiFi country code,
+etc... Sono molto importanti da impostare all'inizio in modo da
+non aver più problemi successivamente. Passate ognuna delle
+impostazioni alla ricerca delle opzioni italiane; per quanto
+riguarda il <em>locale</em> scegliete l'opzione <strong>it_IT.UTF-8</strong>.</p>
+</dd>
+<dt>Interfacing Options</dt>
+<dd>
+<p>In questo menù ci sono le opzioni per attivare o disattivare alcune
+periferiche o alcuni strumenti software per l'interazione con il
+Raspberry. Tra queste opzioni di interfaccia troviamo la camera, i
+bus I2C, 1-wire e SPI, la seriale, la remote GPIO, i software SSH e
+VNC. Attivate o disattivate ciò che vi serve (se non sapete che vi
+serve... disattivatelo). Per applicare le opzioni serve il riavvio.</p>
+</dd>
+<dt>Advanced Options</dt>
+<dd>
+<p>Qui ci sono impostazioni abbastanza complicate, studiare... per
+credere!</p>
+</dd>
+</dl>
+<p>Terminate le impostazioni è importantissimo <strong>procedere ad un riavvio</strong>
+per essere sicuro di aver applicato tutte le modifiche necessarie!</p>
+<h2 id="prime-operazioni">Prime operazioni</h2>
+<p>Riavviato il sistema operativo, diamo un occhio più da vicino al desktop
+del Raspberry</p>
+<p><img alt="Raspbian Buster desktop" src="../images/RPI_common_apps.jpg" /></p>
+<p>Poiché considero siate utenti di fascia medio-alta davanti ad un Sistema
+Operativo, immagino non abbiate problemi ad individuare le applicazioni
+più comuni che di certo utilizzeremo su Raspberry.</p>
+<p>Le elenco:</p>
+<ul>
+<li><strong>Browser</strong> (<em>Chromium</em>, la versione opensource di Google Chrome)</li>
+<li><strong>File manager</strong> (<em>PCManFM</em>, un software per navigare tra i file del Raspberry)</li>
+<li><strong>Terminale</strong> (<em>Terminal</em>, per accedere alla riga di comando)</li>
+<li><strong>Text Editor grafico</strong> (<em>Mousepad</em>, un programma tipo il <em>Blocco Note</em> di Windows)</li>
+<li><strong>Text Editor testuale</strong> (nel terminale: <em>nano</em>)</li>
+<li><strong>Editor Python</strong> (<em>IDLE</em>, oppure <em>Thonny</em>... Facile!)</li>
+</ul>
+<p>Considero inoltre che siate in grado di muovermi nel menù principale
+alla ricerca di una applicazione e sappiate interagire con la <em>system tray</em>
+per operazioni tipo controllare l'ora, abilitare/disabilitare bluetooth o wifi,
+montare e smontare una penna USB, etc...</p>
+<p>Se volete prendere confidenza con queste operazioni, questo è il momento
+di farlo, <strong>prima</strong> di andare avanti e inesorabilmente iniziare a
+fingere di aver capito...</p>
+<div class="admonition tip">
+<p class="admonition-title">Suggerimento</p>
+<p>Fra le tante cose <em>nuove</em> su cui documentarsi, vale secondo me la pena
+di spendere 5 minuti e curiosare su Internet a proposito della
+<strong>organizzazione del file system su linux</strong>.</p>
+</div>
+<p>Provate a cercare quella frase in rete e a leggere qualcosa a proposito.</p>
+<p>5 minuti, dai...</p>
+<h2 id="il-terminale-linux">Il terminale Linux</h2>
+<p>Adesso vogliamo dedicare un pò di tempo a prendere confidenza con il
+terminale Linux. Utilizzare l'interfaccia testuale può essere molto
+vantaggioso in diversi casi:</p>
+<ul>
+<li>
+<p>Tutti i sistemi Linux hanno la stessa interfaccia testuale, ma le
+    interfacce grafiche sono potenzialmente tutte diverse</p>
+</li>
+<li>
+<p>La connessione remota ad un dispositivo in modalità testuale è
+    veloce, sicura e facile da stabilire</p>
+</li>
+<li>
+<p>L'interfaccia testuale è molto potente. Pensate all'interfaccia
+    grafica del vostro Sistema Operativo preferito:</p>
+<blockquote>
+<ul>
+<li>Come si fa a controllare l'IP della macchina?</li>
+<li>Come si fa a cercare un file all'interno di tutto il
+    computer?</li>
+<li>Come si fa a disintallare un programma? Arrestare un servizio?</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>Tutte queste operazioni costano un unico comando, una riga di codice con
+l'interfaccia testuale. E richiedono un secondo o poco più per
+l'esecuzione.</p>
+<p>Adesso che ho attirato la vostra attenzione sull'utilizzo della linea
+di testo, vediamo alcuni semplici comandi organizzati per utilizzo:</p>
+<p><strong>Muoversi fra i file</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ls</td>
+<td>Elenca i file nella directory corrente (list)</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>Cambia Directory.</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>Directory corrente</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Manipolazione del testo</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat</td>
+<td>Concatena i file e ne manda il contenuto nello standard output</td>
+</tr>
+<tr>
+<td>less</td>
+<td>Visualizza il contenuto di un file</td>
+</tr>
+<tr>
+<td>nano</td>
+<td>Editor testuale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gestione di file e directory</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mkdir</td>
+<td>Crea una directory, una cartella</td>
+</tr>
+<tr>
+<td>touch</td>
+<td>Crea un file</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>Copia un file o una directory</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>Sposta un file o una directory</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>Rimuove un file o una directory</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sistema</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shutdown</td>
+<td>Inizia la procedura di spegnimento</td>
+</tr>
+<tr>
+<td>reboot</td>
+<td>Riavvia il sistema</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Utilities</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>history</td>
+<td>Elenca la cronologia dei comandi digitati</td>
+</tr>
+<tr>
+<td>man</td>
+<td>Apre il manuale richiesto</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Permessi di esecuzione</p>
+<p>Il comando <code>sudo</code> permette di eseguire qualsiasi comando con privilegi amministrativi.</p>
+<p>Basta precedere <code>sudo</code> a qualsiasi comando per fare come se fosse l'amministratore
+del sistema ad eseguirlo.</p>
+<p><img alt="sudo examples" src="../images/sudo.png" /></p>
+</div>
+<h2 id="gestione-software">Gestione software</h2>
+<p>L' <strong>Advanced Packaging Tool</strong> (conosciuto con l'acronimo <code>apt</code>) è il
+gestore standard di pacchetti software della distribuzione Debian e di
+tutte le sue derivate. In particolare vale la pena di ricordare Ubuntu e
+Raspberry come derivate di punta.</p>
+<p>Questo sistema di gestione dei pacchetti è in grado di cercare,
+scaricare, installare qualsiasi software disponibile nei repository
+indicati nei file di configurazione per renderli disponibile
+all'istante!</p>
+<div class="admonition warning">
+<p class="admonition-title">Attenzione!</p>
+<p>Poiché il comando <code>apt</code> si occupa di operazioni amministrative, deve
+essere sempre preceduto dal comando <code>sudo</code>.</p>
+</div>
+<p>Vediamo via via le opzioni di <code>apt</code> più importanti:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div>
+<p>Aggiorna l'elenco del software presente nel repository. In questo modo
+APT saprà qual è l'ultima versione del software disponibile online.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</code></pre></div>
+<p>Sincronizza il software di sistema con quello presente nel repository.
+Praticamente permette di aggiornare tutto il software all'ultima
+versione disponibile.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>search<span class="w"> </span>package
+</code></pre></div>
+<p>Cerca il termine "package" fra i pacchetti software disponibili nel
+repository. Funziona anche senza sudo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>package
+</code></pre></div>
+<p>Scarica "package" e lo installa nel sistema, rendendolo disponibile
+all'utente.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>package
+</code></pre></div>
+<p>Rimuove "package" dal sistema.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Piede" >
+        
+          
+          <a href="../01_installation/" class="md-footer__link md-footer__link--prev" aria-label="Precedente: Installazione">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Precedente
+              </span>
+              <div class="md-ellipsis">
+                Installazione
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03_remote/" class="md-footer__link md-footer__link--next" aria-label="Successivo: Remoto">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Successivo
+              </span>
+              <div class="md-ellipsis">
+                Remoto
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      dvjlabs (c) 2022-inf<br> <a href="#__consent">Change Cookie Settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+
+
+  
+
+<h4>Consenso all'utilizzo dei cookies</h4>
+<p>Questo sito memorizza alcuni cookies solo per riconoscere un visitatore che non è alla sua prima visita e alcune preferenze, come il tema di visualizzazione della pagina selezionato.<br> Se non acconsenti, questa finestra riapparirà ogni volta che riapri il sito.<br> Se vuoi cambiare le tue scelte, in fondo alla pagina trovi un link per modificarle ;)
+</p>
+<input class="md-toggle" type="checkbox" id="__settings" checked>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accetta</button>
+    
+    
+    
+  
+    
+    
+      <button type="reset" class="md-button md-button--primary">Rifiuta</button>
+    
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.footer", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
