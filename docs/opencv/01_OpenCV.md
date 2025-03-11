@@ -136,7 +136,7 @@ while True:
         break
 
 # release the camera from video capture
-cap.release()
+videoCapture.release()
 # De-allocate any associated memory usage
 cv2.destroyAllWindows()
 ```
@@ -153,7 +153,7 @@ In ogni caso, siamo costretti ad affidarci alla nuova versione del software di g
 Per installare tutto su un Raspberry Pi, digitate sul terminale:
 
 ``` bash
-$ sudo apt install python3-camera2
+$ sudo apt install python3-picamera2
 $ sudo apt install rpicam-apps
 ```
 
